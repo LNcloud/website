@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-custom-deployment  # Name of the service
+spec:
+  type: NodePort  # Type of the service (exposes service on each Node's IP at a static port)
+  ports:
+    - targetPort: 80  # Port on the container
+      port: 80        # Port on the service
+      nodePort: 30008 # Port on each node
+  selector:
+    app: custom  # Selector to match pods with this label
